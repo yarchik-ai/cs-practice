@@ -5,6 +5,7 @@ def winner(names:list[str],scores: list[float]):
         for j in range(len(names)):
             if scores[i] == max_score:
                 winner = names[i]
+                break
     return winner
 
 def average(scores: list[float]):
@@ -17,7 +18,7 @@ def ranking (names: list[str], scores: list[float]):
         for j in range(len(scores)):
             res.append([names[i], scores[j]])
     res.sort(key=lambda x: x[1], reverse=True)
-    for i in res:
+    for i in range(len(res)):
         Names.append(res[i][0])
     return Names
 
@@ -28,7 +29,7 @@ def above_average(names: list[str], scores: list[float]):
     for i in range(len(names)):
         for j in range(len(scores)):
             res.append((names[i], scores[j]))
-    for i in res:
+    for i in range(len(res)):
         if res[i][1] > average:
             Names.append(res[i][0])
     return Names
