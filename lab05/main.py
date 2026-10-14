@@ -1,4 +1,4 @@
-from lab05.tablestats import read_rows, count_types
+from tablestats import read_rows
 def count_types1(rows):
     count_run = 0
     count_error = 0
@@ -13,7 +13,6 @@ def count_types1(rows):
             count_check += 1
         if row["тип"] == "выгрузка":
             count_exit += 1
-
     return {"запуск": count_run,"ошибка": count_error,"проверка": count_check,"выгрузка": count_exit}
 with open(input(),'r',encoding="utf_8") as table:
     rows = read_rows(table.readlines())
@@ -32,4 +31,4 @@ print(count_key)
 print(summ_error)
 
 with open('summary.csv','w',encoding="utf_8") as file:
-    file.write(f'{summ}\n,{count_key}\n,{summ_error}\n\n')
+    file.write(f'{summ}\n,{count_key}\n,{summ_error}\n')
