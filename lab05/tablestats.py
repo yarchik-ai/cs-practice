@@ -6,31 +6,28 @@ def total_minutes(rows,kind):
     return round(total, 1)
 
 def read_rows(lines):
-    if not lines:
-        return []
-    headers = lines[0].strip().split(",") # заголовок
+    headers = None
     rows = []
-    for line in lines[1:]:
-        line = line.strip() # убираем первые и последние пробелы, перенос строки
-        if not line: # проверка на пустые строки
+    for line in lines:
+        line = line.strip()
+        if not line:
             continue
-        line = line.split(",") # разделяем элементы по запятой и закидывает в список
-        if len(line) != len(headers): # проверка на целостность строки
+        values = [value.strip() for value in line.split(",")]
+        if headers is None:
+            headers = values
             continue
-        row = dict(zip(headers, line)) # создание словаря
-        rows.append(row)
+        if len(values) != len(headers):
+            continue
     return rows
 
 def count_types(rows):
-    count_run = 0
-    count_error = 0
+    counts = {}
     for row in rows:
-        if row["тип"] == 'запуск':
-            count_run += 1
-        if row["тип"] == "ошибка":
-            count_error += 1
-    return {"запуск": count_run,"ошибка": count_error}
-
+        kind = row["тип"]
+        if kind not in counts:
+            counts[kind] = 0
+        counts[kind] += 1
+    return counts
 def to_csv(counts):
     lines = ["тип,количество"]
     for key in sorted(counts):
