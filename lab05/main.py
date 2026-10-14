@@ -1,8 +1,23 @@
 from lab05.tablestats import read_rows, count_types
-filename = input()
-with open(filename,'r',encoding="utf_8") as table:
+def count_types1(rows):
+    count_run = 0
+    count_error = 0
+    count_check = 0
+    count_exit = 0
+    for row in rows:
+        if row["тип"] == 'запуск':
+            count_run += 1
+        if row["тип"] == "ошибка":
+            count_error += 1
+        if row["тип"] == "проверка":
+            count_check += 1
+        if row["тип"] == "выгрузка":
+            count_exit += 1
+
+    return {"запуск": count_run,"ошибка": count_error,"проверка": count_check,"выгрузка": count_exit}
+with open(input(),'r',encoding="utf_8") as table:
     rows = read_rows(table.readlines())
-    count = count_types(rows)
+    count = count_types1(rows)
     count_key = 0 # количество различных типов
     summ = 0  # количество прочитанных записей
     summ_error = 0 # суммарные минуты записей типа "ошибка"

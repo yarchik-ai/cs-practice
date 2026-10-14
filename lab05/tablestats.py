@@ -24,24 +24,18 @@ def read_rows(lines):
 def count_types(rows):
     count_run = 0
     count_error = 0
-    count_exit = 0
-    count_check = 0
     for row in rows:
         if row["тип"] == 'запуск':
             count_run += 1
         if row["тип"] == "ошибка":
             count_error += 1
-        if row["тип"] == "выгрузка":
-            count_exit += 1
-        if row["тип"] == "проверка":
-            count_check += 1
-    return {"запуск": count_run,"ошибка": count_error,"выгрузка": count_exit,"проверка": count_check}
+    return {"запуск": count_run,"ошибка": count_error}
 
 def to_csv(counts):
     lines = ["тип,количество"]
     for key in sorted(counts):
         lines.append(f"{key},{counts[key]}")
-    return "\n".join(lines) # объединяем строки, добавляя перенос строки
+    return "\n".join(lines) + "\n" # объединяем строки, добавляя перенос строки
 
 
 
