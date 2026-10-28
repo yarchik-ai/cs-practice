@@ -15,6 +15,7 @@ def column_means(matrix: list[list[float]]) -> list[float]:
         return []
     matrix = np.array(matrix)
     return matrix.mean(axis=0).round(decimals=6).tolist()
+
 def column_range(matrix: list[list[float]], column: int) -> float:
     if len(matrix) == 0:
         return 0.0
