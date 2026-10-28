@@ -8,12 +8,12 @@ def reshape_rows(values: list[float], width: int) -> list[list[float]]:
 
 def block(matrix: list[list[float]], rows: list[int], columns: list[int]) -> list[list[float]]:
     matrix = np.array(matrix)
-    return list(matrix[rows, columns])
+    return matrix[rows, columns].tolist()
 
 def column_means(matrix: list[list[float]]) -> list[float]:
     matrix = np.array(matrix)
-    return list(matrix.mean(axis=0).round(decimals=6))
+    return matrix.mean(axis=0).round(decimals=6).tolist()
 def column_range(matrix: list[list[float]], column: int) -> float:
     matrix = np.array(matrix)
-    return round(matrix[column].max() - matrix[column].min(),6)
+    return round(float(matrix[column].max() - matrix[column].min()),6)
 
