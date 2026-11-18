@@ -13,8 +13,8 @@ def vector_report(values: list[float]) -> dict:
 
 def change_vector(values: list[float]) -> list[float]:
     a = np.array(values.copy())
-    a[1:4] = 99
-    a[5::2] = -1
+    a[2:4] = 99.0
+    a[::2] = -1.0
     return a.tolist()
 
 def cap_above(values: list[float], limit: float) -> list[float]:
@@ -26,4 +26,5 @@ def celsius_to_fahrenheit(values: list[float]) -> list[float]:
     values = np.array(values.copy())
     values = values * (9/5) + 32
     return values.tolist()
+
 
