@@ -11,7 +11,7 @@ def replace_rectangle(matrix: list[list[float]], row_start: int, row_stop: int, 
     return result.tolist()
 
 def matrix_vector_product(matrix: list[list[float]], vector: list[float]) -> list[float]:
-    return np.array(matrix) @ np.array(vector).tolist()
+    return (np.array(matrix) @ np.array(vector)).tolist()
 
 def matrix_multiply(left: list[list[float]], right: list[list[float]]) -> list[list[float]]:
     return (np.array(left) @ np.array(right)).tolist()
